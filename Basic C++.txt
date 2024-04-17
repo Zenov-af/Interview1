@@ -1,0 +1,87 @@
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    const int dollar_value {100};
+    const int quarter_value {25};
+    const int dime_value {10};
+    const int nickel_value {5};
+
+    int change_amount {};
+    double total_estimate (0);
+    double inserted (0);
+    double $amount (0);
+    cout << "Hello, welcome to Self checkout  Service" << endl;
+    int item_1 {0};
+
+    cout << "\nHow many of item 1 do you have? ";
+    cin >> item_1;
+
+    int item_2 {0};
+    cout << "How many of item 2 do you have? ";
+    cin >> item_2;
+
+    const double  price_per_item_1 {13};
+    const double  price_per_item_2 {8};
+
+    const double sales_tax {0.19};
+    const int estimate_expiry {14};
+
+    cout << "\nEstimate for Everything" << endl;
+    cout << "Number of item 1: " << item_1 << endl;
+    cout << "Number of item 2: " << item_2 << endl;
+
+    cout << "Price per item 1: $" << price_per_item_1 << endl;
+    cout << "Price per item 2: $" << price_per_item_2 << endl;
+
+    cout << "Cost : $" << (price_per_item_1 * item_1) +(price_per_item_2 * item_2)<< endl;
+
+    cout << "Tax: $" << ((price_per_item_1 * item_1) + (price_per_item_2 * item_2)) * sales_tax<< endl;
+
+    cout << "----------------------------------------------------" << endl;
+    total_estimate = ((price_per_item_1 * item_1) + (price_per_item_2 * item_2)) + (((price_per_item_1 * item_1) + (price_per_item_2 * item_2)) * sales_tax);
+    cout << "Total estimate: $" << total_estimate << endl;
+
+    cout << "This estimate is valid for " << estimate_expiry << " days" << endl;
+
+    cout << "Insert money if wish to proceed " << endl;
+
+
+
+    cout << "How much have you inserted (in $)? ";
+    cin >> $amount;
+    inserted =$amount *100;
+    total_estimate = total_estimate *100;
+    total_estimate -= inserted;
+    change_amount  =total_estimate *-1;
+    
+    int balance{}, dollars{}, quarters {}, dimes{}, nickels{}, pennies{};
+
+    dollars = change_amount / dollar_value;
+    balance = change_amount - (dollars * dollar_value);
+
+    quarters =  balance / quarter_value;
+    balance -= quarters * quarter_value;
+
+    dimes = balance / dime_value;
+    balance -= dimes * dime_value;
+
+    nickels = balance / nickel_value;
+    balance -= nickels * nickel_value;
+
+    pennies = balance;
+
+    cout << "\nYou can provide this change as follows : " << endl;
+    cout << "dollars  : " << dollars << endl;
+    cout << "quarters : " << quarters << endl;
+    cout << "dimes    : " << dimes << endl;
+    cout << "nickels  : " << nickels << endl;
+    cout << "pennies  : " << pennies << endl;
+
+    cout << endl;
+    return 0;
+}
+
